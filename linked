@@ -1,0 +1,109 @@
+package com.study
+
+
+
+
+internal class Linked_list {
+    var head : Node? = null
+    internal class Node(var data: Int ){
+        var next : Node? = null
+
+    }
+    companion object{
+        fun main(args: Array<String>){
+            val llist = Linked_list()
+
+            llist.head = Node(1)
+
+
+            val second = Node(2)
+            val third = Node(3)
+
+
+            llist.head!!.next=second
+
+            second.next = third
+        }
+    }
+    fun push(new_data: Int){
+        val new_node = Node(new_data)
+
+        new_node.next = head
+
+        head = new_node
+
+
+    }
+
+    fun insert_by_index(prev_node:Node, new_data: Int){
+        if(prev_node == null){
+            println("empty")
+            return
+        }
+
+
+        val new_node = Node(new_data)
+
+        new_node.next = prev_node.next
+
+        prev_node.next = new_node
+    }
+
+    fun add(new_data: Int){
+        val new_node =Node(new_data)
+
+        if (head == null){
+            head= Node(new_data)
+            return
+        }
+
+
+        new_node.next = null
+
+
+        var last = head
+
+        while(last!!.next != null){
+            last = last.next
+        }
+        last.next = new_node
+        return
+
+    }
+
+
+}
+data class Node<T>(var value: T, var next: Node<T>? = null){
+    override fun toString(): String {
+        return if(next !=null){
+            "$value -> ${next.toString()}"
+        } else {
+            "$value"
+        }
+    }
+}
+
+fun main() {
+        val node1 = Node(value = 1)
+        val node2 = Node(value = 2)
+        val node3 = Node(value = 3)
+        val nod4 = Linked_list()
+        nod4.add(1)
+        node1.next = node2
+        node2.next = node3
+        println(node1)
+        println(nod4)
+
+}
+
+
+/*
+Insert - 첫번째 삽입
+Add - 마지막에 추가
+Insert by Index
+Delete by Index
+print list 모든 원소를 보여준다
+update By Index
+get By Data : 결과 index값
+get By Index : 결과 Data
+ */
