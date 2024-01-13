@@ -147,6 +147,17 @@ class LinkedList {
 
     }
 
+    fun deletebydata(data: String){
+        var current = head?.next
+        var prev = head
+        while(current?.data != data){
+            prev = current
+            current = current?.next
+        }
+        prev?.next = current.next
+
+
+    }
     fun getByData(data:String) {
         var current_index = 0
         var current = head
@@ -172,11 +183,13 @@ class LinkedList {
 }
 fun main(){
         val linked_list = LinkedList()
+        linked_list.addFirst("6")
+        linked_list.addlast("9")
         linked_list.insetByIndex(0,"3")
         linked_list.insetByIndex(1,"2")
         linked_list.insetByIndex(0,"1")
         linked_list.insetByIndex(2,"4")
-        linked_list.deleteByIndex(1)
+        linked_list.deletebydata("6")
         linked_list.printList()
 
 }
